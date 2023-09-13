@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CarsService} from "../../../../services/cars.service";
 import {Car} from "../../../../models/car.model";
 
@@ -18,16 +18,15 @@ export class CarFormComponent implements OnInit{
   submitForm(): void {
     this.formSubmitted.emit();
     console.log('submit', this.validateForm.value);
+    if (this.carToEdit) {
+      this.carsService.updateCar(this.carToEdit.name, this.validateForm.value as Car);
+      return;
+    }
     this.carsService.addCar(this.validateForm.value as Car);
-    this.validateForm.reset();
-    this.carToEdit = undefined;
   }
 
   close(): void {
     this.formSubmitted.emit();
-    this.carToEdit = undefined;
-    this.validateForm.get('name')?.reset();
-    // this.initializeForm();
   }
 
   onFileSelected(event: any) {

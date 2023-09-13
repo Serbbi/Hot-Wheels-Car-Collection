@@ -26,12 +26,12 @@ export class DashboardComponent {
     this.isVisible = true;
     if(car) {
       this.carToEdit = car;
-      // console.log('carToEdit', this.carToEdit);
     }
   }
 
   hideModal(): void {
     this.isVisible = false;
+    this.carToEdit = undefined;
   }
 
   onFormSubmit(): void {

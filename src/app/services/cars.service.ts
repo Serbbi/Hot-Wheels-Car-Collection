@@ -34,4 +34,11 @@ export class CarsService {
     this.cars.next(cars);
     console.log(this.cars.getValue());
   }
+
+  public updateCar(carName: string, car: Car) {
+    let cars = this.cars.getValue();
+    const carIndex = cars.findIndex(c => c.name === carName);
+    cars[carIndex] = car;
+    this.cars.next(cars);
+  }
 }
