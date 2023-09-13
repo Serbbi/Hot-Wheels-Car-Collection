@@ -11,6 +11,7 @@ export class DashboardComponent {
   cars: Car[] = [];
   isVisible: boolean = false;
   public carToEdit?: Car;
+  searchTerm: string = '';
 
   constructor(private CarsService: CarsService) {
     this.CarsService.cars.subscribe(cars => {
@@ -36,5 +37,12 @@ export class DashboardComponent {
 
   onFormSubmit(): void {
     this.hideModal();
+  }
+
+  search(): void {
+    this.cars = [];
+    this.CarsService.cars.subscribe(cars => {
+      this.cars.push(...cars.filter(car => car.name.toLowerCase().includes(this.searchTerm.toLowerCase())));
+    });
   }
 }

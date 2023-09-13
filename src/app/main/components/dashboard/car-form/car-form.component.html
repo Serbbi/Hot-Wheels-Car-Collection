@@ -58,7 +58,13 @@
     </nz-form-control>
   </nz-form-item>
 
-  <button *ngIf="!carToEdit" nz-button nzType="primary" [disabled]="!validateForm.valid">Add car</button>
-  <button *ngIf="carToEdit" nz-button nzType="primary" [disabled]="!validateForm.valid">Edit car</button>
-  <button nz-button type="button" (click)="close()">Cancel</button>
+  <div class="button-wrapper">
+    <div class="primary-button">
+      <button *ngIf="!carToEdit" nz-button nzType="primary" [disabled]="!validateForm.valid">Add car</button>
+      <button *ngIf="carToEdit" nz-button nzType="primary" [disabled]="!validateForm.valid">Edit car</button>
+    </div>
+    <div class="secondary-button">
+      <button nz-button type="button" (click)="close()">Cancel</button>
+    </div>
+  </div>
 </form>

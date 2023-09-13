@@ -1,0 +1,27 @@
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  .primary-button{
+    button {
+      margin-right: 1rem;
+      background-color: sandybrown;
+      border-radius: 5px;
+      border: none;
+      color: white;
+    }
+
+  }
+  .secondary-button{
+    button {
+      margin-left: 1rem;
+      background-color: #ffcc99;
+      border-radius: 5px;
+      border: none;
+      color: white;
+    }
+    button:hover {
+      background-color: navajowhite;
+    }
+
+  }
+}
