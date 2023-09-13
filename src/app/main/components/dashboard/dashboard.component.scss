@@ -1,0 +1,50 @@
+.search-bar{
+  display: flex;
+  justify-content: center;
+
+  nz-input-group{
+    width: 50%;
+    input{
+      border-radius: 17px 0 0 17px;
+    }
+    input:hover {
+      border-color: sandybrown;
+    }
+    input:focus{
+      border-color: sandybrown;
+      box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
+    }
+  }
+
+  .round{
+    button{
+      border-radius: 0 17px 17px 0;
+      background-color: sandybrown;
+      border:0;
+    }
+    button:focus{
+      border-color: sandybrown;
+      box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
+    }
+  }
+}
+
+.table-container{
+  img{
+    width: 40%;
+    height: 40%;
+    border-radius: 100px;
+    object-fit: cover;
+  }
+
+  td{
+    width: 50px;
+
+    span{
+      cursor: pointer;
+    }
+  }
+}
+
+
+

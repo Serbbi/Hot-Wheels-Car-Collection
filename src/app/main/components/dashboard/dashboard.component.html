@@ -1,0 +1,42 @@
+<div class="search-bar">
+  <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+    <input type="text" nz-input placeholder="Search for a car..." />
+  </nz-input-group>
+  <ng-template #suffixButton>
+    <div class="round">
+      <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+    </div>
+  </ng-template>
+</div>
+<button nz-button [nzType]="'primary'" (click)="showModal()"><span>+</span></button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add a new car" [nzFooter]=null (nzOnCancel)="hideModal()">
+  <ng-container *nzModalContent>
+    <app-car-form (formSubmitted)="onFormSubmit()" [carToEdit]="carToEdit"></app-car-form>
+  </ng-container>
+</nz-modal>
+
+<div class="table-container">
+  <nz-table #basicTable [nzData]="cars">
+    <thead>
+    <tr>
+      <th>Icon</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Details</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let car of basicTable.data">
+      <td><img src="{{car.icon}}" alt="No image lol"></td>
+      <td>{{ car.name }}</td>
+      <td>{{ car.year }}</td>
+      <td>Details</td>
+      <td><span (click)="showModal(car)" nz-icon nzType="edit" nzTheme="outline"></span></td>
+      <td><span (click)="delete(car)" nz-icon nzType="delete" nzTheme="outline"></span></td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>
+
