@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {CarsService} from "../../../../services/cars.service";
 import {Car} from "../../../../models/car.model";
 
@@ -13,8 +13,7 @@ export class CarFormComponent implements OnInit{
   @Output() formSubmitted: EventEmitter<void> = new EventEmitter<void>();
   @Input() carToEdit?: Car;
 
-  constructor(private fb: UntypedFormBuilder,
-              private carsService: CarsService) {}
+  constructor(private carsService: CarsService) {}
 
   submitForm(): void {
     this.formSubmitted.emit();
@@ -27,8 +26,8 @@ export class CarFormComponent implements OnInit{
   close(): void {
     this.formSubmitted.emit();
     this.carToEdit = undefined;
-    this.validateForm.reset();
-    this.initializeForm();
+    this.validateForm.get('name')?.reset();
+    // this.initializeForm();
   }
 
   onFileSelected(event: any) {
@@ -48,15 +47,40 @@ export class CarFormComponent implements OnInit{
   }
 
   private initializeForm(): void {
-    this.validateForm = this.fb.group({
-      icon: [this.carToEdit?.icon],
-      name: [this.carToEdit?.name, [Validators.required]],
-      type: [this.carToEdit?.type, [Validators.required]],
-      year: [this.carToEdit?.year],
-      country: [this.carToEdit?.country],
-      horsepower: [this.carToEdit?.horsepower],
-      zeroToHundred: [this.carToEdit?.zeroToHundred],
-      favorite: [this.carToEdit?.favorite],
+    this.validateForm = new FormGroup({
+      icon: new FormControl(this.carToEdit?.icon),
+      name: new FormControl(this.carToEdit?.name, [Validators.required]),
+      year: new FormControl(this.carToEdit?.year),
+      type: new FormControl(this.carToEdit?.type, [Validators.required]),
+      country: new FormControl(this.carToEdit?.country),
+      horsepower: new FormControl(this.carToEdit?.horsepower),
+      zeroToHundred: new FormControl(this.carToEdit?.zeroToHundred),
+      favorite: new FormControl(this.carToEdit?.favorite)
     });
+  }
+
+  get icon(): FormControl {
+    return this.validateForm.get('icon') as FormControl;
+  }
+  get name(): FormControl {
+    return this.validateForm.get('name') as FormControl;
+  }
+  get year(): FormControl {
+    return this.validateForm.get('year') as FormControl;
+  }
+  get type(): FormControl {
+    return this.validateForm.get('type') as FormControl;
+  }
+  get country(): FormControl {
+    return this.validateForm.get('country') as FormControl;
+  }
+  get horsepower(): FormControl {
+    return this.validateForm.get('horsepower') as FormControl;
+  }
+  get zeroToHundred(): FormControl {
+    return this.validateForm.get('zeroToHundred') as FormControl;
+  }
+  get favorite(): FormControl {
+    return this.validateForm.get('favorite') as FormControl;
   }
 }
