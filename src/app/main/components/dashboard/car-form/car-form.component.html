@@ -1,59 +1,50 @@
 <form [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-form-label nzRequired nzFor="name">Name</nz-form-label>
-    <nz-form-control nzErrorTip="Please input the car name!">
-      <nz-input-group nzPrefixIcon="car">
-        <input formControlName="name" nz-input placeholder="eg: Dacia Logan"/>
-      </nz-input-group>
+    <nz-form-control [nzSpan]="17" nzErrorTip="Please input the car name!">
+      <input formControlName="name" nz-input placeholder="eg: Dacia Logan"/>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label nzRequired nzFor="type">Type</nz-form-label>
-    <nz-form-control nzErrorTip="Please input the car type!">
+    <nz-form-control [nzSpan]="17" nzErrorTip="Please input the car type!">
       <input formControlName="type" nz-input placeholder="eg: Sedan" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label nzFor="year">Year</nz-form-label>
-    <nz-form-control nzErrorTip="Please input a valid year!">
-      <input formControlName="year" nz-input type="number" placeholder="eg: 2004" />
+    <nz-form-control [nzSpan]="17" nzErrorTip="Please input a valid year!">
+      <input formControlName="year" nz-input placeholder="eg: 2004"/>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label nzFor="country">Country</nz-form-label>
-    <nz-form-control nzErrorTip="Please input a valid country!">
+    <nz-form-control [nzSpan]="17" nzErrorTip="Please input a valid country!">
       <input formControlName="country" nz-input placeholder="eg: Romania" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label nzFor="horsepower">Horsepower</nz-form-label>
-    <nz-form-control nzErrorTip="Please input a number!">
-      <input formControlName="horsepower" nz-input type="number" placeholder="eg: 95" />
+    <nz-form-control [nzSpan]="17" nzErrorTip="Please input a number!">
+      <input formControlName="horsepower" nz-input placeholder="eg: 95" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label nzFor="zeroToHundred">0-100 KPH</nz-form-label>
-    <nz-form-control nzErrorTip="Please input a valid number!">
+    <nz-form-control [nzSpan]="17" nzErrorTip="Please input a valid number!">
       <input formControlName="zeroToHundred" nz-input placeholder="eg: 12.5" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-control>
-      <label nz-checkbox formControlName="favorite">
-        <span> Favourite </span>
-      </label>
+    <nz-form-control [nzSpan]="17">
+      <input type="checkbox" formControlName="favorite">
+      <span> Favourite </span>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-label nzFor="icon">Image</nz-form-label>
-    <nz-form-control>
+    <nz-form-control [nzSpan]="14">
       <input type="file" (change)="onFileSelected($event)">
     </nz-form-control>
   </nz-form-item>

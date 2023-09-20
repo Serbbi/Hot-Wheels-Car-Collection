@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CarsService} from "../../../../services/cars.service";
 import {Car} from "../../../../models/car.model";
+import {CustomValidators} from "../../../../helpers/custom-validators";
 
 @Component({
   selector: 'app-car-form',
@@ -49,11 +50,11 @@ export class CarFormComponent implements OnInit{
     this.validateForm = new FormGroup({
       icon: new FormControl(this.carToEdit?.icon),
       name: new FormControl(this.carToEdit?.name, [Validators.required]),
-      year: new FormControl(this.carToEdit?.year),
+      year: new FormControl(this.carToEdit?.year, [Validators.pattern('^[0-9]*$'), Validators.min(1900)]),
       type: new FormControl(this.carToEdit?.type, [Validators.required]),
-      country: new FormControl(this.carToEdit?.country),
-      horsepower: new FormControl(this.carToEdit?.horsepower),
-      zeroToHundred: new FormControl(this.carToEdit?.zeroToHundred),
+      country: new FormControl(this.carToEdit?.country, [Validators.pattern('^[a-zA-Z ]*$')]),
+      horsepower: new FormControl(this.carToEdit?.horsepower, [Validators.pattern('^[0-9]*$'), Validators.min(0)]),
+      zeroToHundred: new FormControl(this.carToEdit?.zeroToHundred, [Validators.pattern('[0-9]+([.][0-9]+)?'), Validators.min(0)]),
       favorite: new FormControl(this.carToEdit?.favorite)
     });
   }
