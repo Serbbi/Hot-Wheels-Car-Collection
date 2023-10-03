@@ -1,37 +1,37 @@
 <form [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-form-item>
     <nz-form-control [nzSpan]="17" nzErrorTip="Please input the car name!">
-      <input formControlName="name" nz-input placeholder="eg: Dacia Logan"/>
+      <input formControlName="name" nz-input placeholder="Car name"/>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-control [nzSpan]="17" nzErrorTip="Please input the car type!">
-      <input formControlName="type" nz-input placeholder="eg: Sedan" />
+      <input formControlName="type" nz-input placeholder="Type" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-control [nzSpan]="17" nzErrorTip="Please input a valid year!">
-      <input formControlName="year" nz-input placeholder="eg: 2004"/>
+      <input formControlName="year" nz-input placeholder="Manufacture year"/>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-control [nzSpan]="17" nzErrorTip="Please input a valid country!">
-      <input formControlName="country" nz-input placeholder="eg: Romania" />
+      <input formControlName="country" nz-input placeholder="Country" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-control [nzSpan]="17" nzErrorTip="Please input a number!">
-      <input formControlName="horsepower" nz-input placeholder="eg: 95" />
+      <input formControlName="horsepower" nz-input placeholder="Horsepower" />
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
     <nz-form-control [nzSpan]="17" nzErrorTip="Please input a valid number!">
-      <input formControlName="zeroToHundred" nz-input placeholder="eg: 12.5" />
+      <input formControlName="zeroToHundred" nz-input placeholder="0 to 100 in seconds" />
     </nz-form-control>
   </nz-form-item>
 
@@ -45,7 +45,7 @@
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-control [nzSpan]="14" nzErrorTip="Please input a valid file!">
+    <nz-form-control [nzSpan]="14">
       <div class="file">
         <input type="file" name="file" id="file" class="inputfile" (change)="onFileSelected($event)"/>
         <label for="file">Choose a file</label>
