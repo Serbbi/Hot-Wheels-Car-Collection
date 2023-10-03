@@ -37,15 +37,20 @@
 
   <nz-form-item>
     <nz-form-control [nzSpan]="17">
-      <input type="checkbox" formControlName="favorite">
-      <span> Favourite </span>
+        <label class="checkbox">
+          <input type="checkbox" formControlName="favorite">
+          <span>Favorite</span>
+        </label>
     </nz-form-control>
   </nz-form-item>
 
   <nz-form-item>
-    <nz-form-label nzFor="icon">Image</nz-form-label>
-    <nz-form-control [nzSpan]="14">
-      <input type="file" (change)="onFileSelected($event)">
+    <nz-form-control [nzSpan]="14" nzErrorTip="Please input a valid file!">
+      <div class="file">
+        <input type="file" name="file" id="file" class="inputfile" (change)="onFileSelected($event)"/>
+        <label for="file">Choose a file</label>
+        <span class="chosen-file" id="chosen-file-name"></span>
+      </div>
     </nz-form-control>
   </nz-form-item>
 

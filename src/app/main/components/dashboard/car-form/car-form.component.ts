@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CarsService} from "../../../../services/cars.service";
 import {Car} from "../../../../models/car.model";
-import {CustomValidators} from "../../../../helpers/custom-validators";
 
 @Component({
   selector: 'app-car-form',
@@ -34,6 +33,15 @@ export class CarFormComponent implements OnInit{
     const file: File = event.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(file);
+    let span = document.getElementById('chosen-file-name');
+    if(span) {
+      if(!/^.*\.(jpg|jpeg|png|gif|bmp|svg)$/.test(file.name)) {
+        span.textContent = 'Invalid file type';
+        span.style.color = 'red';
+        return;
+      }
+      span.textContent = file.name.substring(0, 20);
+    }
     reader.onload = () => {
       this.validateForm.get('icon')?.setValue(reader.result as string);
     };

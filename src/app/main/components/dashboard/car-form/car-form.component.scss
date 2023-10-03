@@ -37,16 +37,91 @@ input:focus{
   box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
 }
 
-input[type="file"] {
-  border-radius: 0;
+.checkbox {
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 1.5em;
+  span{
+    color: gray;
+    margin-top: 0.25rem;
+  }
 }
 
 input[type="checkbox"] {
-  border-color: red;
-  background-color: red;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  color: currentColor;
+  width: 1.8em;
+  height: 1.8em;
+  border: 1px solid lightgray;
+  border-radius: 0.4em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
 }
 
-input[type="checkbox"]:checked {
-  border-color: red;
-  background-color: red;
+input[type="checkbox"]::before {
+  content: "";
+  width: 1.4em;
+  height: 1.4em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 2em 2em sandybrown;
+  border-radius: 0.3em;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type=file] {
+  border-radius: 0;
+  color: gray;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  //font-size: 1em;
+  //height: 2.5em;
+  line-height: 2em;
+  color: white;
+  background-color: sandybrown;
+  border-radius: 12px 0 0 12px;
+  display: inline-block;
+  vertical-align: middle; /* Align vertically with the span */
+  padding: 0 10px; /* Add some padding for better appearance */
+}
+
+.inputfile + label:hover {
+  background-color: navajowhite;
+  border-radius: 12px 0 0 12px;
+}
+
+.inputfile + label {
+  cursor: pointer;
+}
+
+.chosen-file{
+  border: 1px solid lightgray;
+  display: inline-block;
+  height: 2em;
+  line-height: 1.8em; /* Set line-height to vertically align text within the span */
+  padding: 0 10px; /* Add padding for better appearance */
+  vertical-align: middle; /* Align vertically with the label */
+  border-radius: 0 12px 12px 0;
+}
+
+.file{
+  display: flex; /* Use flexbox for easy alignment of label and span */
+  align-items: center; /* Center items vertically */
 }
